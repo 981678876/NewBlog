@@ -2,7 +2,9 @@ flask
 flask-script
 flask-session
 flask-sqlalchemy
-
+flask-blueprint
+redis
+pymysql
 
 
 
