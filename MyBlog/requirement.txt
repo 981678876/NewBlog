@@ -1,0 +1,11 @@
+flask
+flask-script
+flask-session
+flask-sqlalchemy
+
+
+
+
+
+
+

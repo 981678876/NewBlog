@@ -1,0 +1,51 @@
+{% extends 'back/base_main.html' %}
+
+{% block title %}
+    用户信息
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+      <div class="page_title">
+       <h2 class="fl">用户列表</h2>
+       <a href="{{ url_for('back.register') }}" class="fr top_rt_btn add_icon">添加新用户</a>
+      </div>
+      <table class="table">
+       <tr>
+        <th>用户id</th>
+        <th>用户账号</th>
+        <th>创建时间</th>
+        <th>操作</th>
+       </tr>
+
+        {% for user in users %}
+       <tr>
+        <td class="center">{{ user.id }}</td>
+        <td class="center">{{ user.username }}</td>
+        <td class="center">{{ user.create_time }}</td>
+        <td class="center">
+         <a href="{{ url_for('back.user_editor', id=user.id) }}" title="编辑" class="link_icon">&#101;</a>
+         <a href="{{ url_for('back.user_del', id=user.id) }}" title="删除" class="link_icon">&#100;</a>
+        </td>
+       </tr>
+        {% endfor %}
+
+      </table>
+      <aside class="paging">
+       <a>第一页</a>
+       <a>1</a>
+       <a>2</a>
+       <a>3</a>
+       <a>…</a>
+       <a>1004</a>
+       <a>最后一页</a>
+      </aside>
+ </div>
+</section>
+{% endblock %}

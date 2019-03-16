@@ -1,0 +1,38 @@
+{% extends 'web/base_main.html' %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="js/hc-sticky.js"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+{% endblock %}
+
+{% block main %}
+  <main class="r_box">
+    {% for art in arts %}
+    <li>
+      <h3><a href="{{ url_for('web.info', id=art.id) }}">{{ art.title }}</a></h3>
+      <p>{{ art.desc }}</p>
+    </li>
+    {% endfor %}
+    <div class="pagelist">
+            <a href="">当前页数：{{ paginate.page }}</a>
+
+            {% if paginate.has_prev %}
+                <a href="/web/index/?page={{ paginate.prev_num }}">上一页</a><a href="">{{ paginate.prev_num }}</a>
+            {% endif %}
+
+            {% if paginate.has_next %}
+                <a href="/web/index/?page={{ paginate.next_num }}">下一页</a><a href="">{{ paginate.next_num }}</a>
+            {% endif %}
+
+            <a href="">总页数：{{ paginate.pages }}</a>
+
+    </div>
+  </main>
+{% endblock %}
+
+
+
+

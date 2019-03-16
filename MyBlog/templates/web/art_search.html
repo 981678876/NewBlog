@@ -1,0 +1,23 @@
+{% extends 'web/base_main.html' %}
+
+{% block title %}
+  首页_个人博客
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<!--[if lt IE 9]>
+<script src="/static/web/js/modernizr.js"></script>
+<![endif]-->
+{% endblock %}
+{% block main %}
+  <main class="r_box">
+    {% for art in arts %}
+    <li>
+      <h3><a href="{{ url_for('web.info',id=art.id)}}">{{ art.title }}</a></h3>
+      <p>{{ art.desc }}</p>
+    </li>
+    {% endfor %}
+  </main>
+{% endblock %}
+

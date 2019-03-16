@@ -1,0 +1,42 @@
+
+{% extends 'back/base_main.html' %}
+
+{% block title %}
+    文章分类
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+    <script src="/static/back/js/jquery.mCustomScrollbar.concat.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<section class="rt_wrap content mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">文章列表</h2>
+            <a href="{{ url_for('back.add_type') }}" class="fr top_rt_btn add_icon">添加文章分类</a>
+        </div>
+        <table class="table">
+            <tr>
+                <th>类型</th>
+                <th>操作</th>
+            </tr>
+            {% for type in types %}
+            <tr>
+
+                    <td class="center">
+
+                        {{ type.t_name }}
+
+                    </td>
+
+                <td class="center">
+                    <a href="{{ url_for('back.del_type', id=type.id) }}" title="编辑" class="link_icon">&#100;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+{% endblock %}
